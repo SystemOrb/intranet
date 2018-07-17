@@ -102,10 +102,16 @@
                         <ul class="dropdown-user">
                             <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img src="../assets/images/users/1.jpg" alt="user"></div>
-                                    <div class="u-text">
-                                        <h4>Steave Jobs</h4>
-                                        <p class="text-muted">varun@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                    <div class="u-img">
+                                        <img src="../assets/images/users/1.jpg" alt="user">
+                                    </div>
+                                    <div class="u-text pull-right">
+                                        <h4 style="font-size: 12px"> {{ userData.nombre}} </h4>
+                                        <p class="text-muted"> {{ userData.nrodoc}} </p>
+                                        <a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">
+                                            Ver perfil
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
                             <!--<li role="separator" class="divider"></li>
@@ -115,7 +121,11 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>-->
-                            <li><a href="#"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
+                            <li>
+                                <a (click)="logout()">
+                                    <i class="fa fa-power-off"></i> Cerrar sesión
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
