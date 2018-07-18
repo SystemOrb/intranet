@@ -3,10 +3,10 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginUser } from '../../../models/usuario/login.class';
 import {MatSnackBar} from '@angular/material/snack-bar';
-declare function init_plugins();
 import swal from 'sweetalert';
 import { ClientUser } from '../../../models/usuario/cliente.class';
 import { Router } from '@angular/router';
+declare function init_plugins();
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'

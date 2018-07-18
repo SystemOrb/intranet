@@ -7,6 +7,7 @@ import { PasajerosComponent } from './pasajeros/pasajeros.component';
 import { RutasComponent } from './rutas/rutas.component';
 import { CajaComponent } from './caja/caja.component';
 import { BusComponent } from './bus/bus.component';
+import { OrdenComponent } from './caja/orden.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
     { path: 'pasajeros', component: PasajerosComponent, data: {title: 'Pasajeros'} },
     { path: 'rutas', component: RutasComponent, data: {title: 'Rutas'}},
     { path: 'caja', component: CajaComponent, data: {title: 'Cuadre de caja'} },
+    { path: 'orden_caja/:id/:date', component: OrdenComponent, data: {title: 'Cuadre de caja'} },
     { path: 'bus', component: BusComponent, data: {title: 'Bus'} },
     { path: '', pathMatch: 'full', redirectTo: '/home' }
 

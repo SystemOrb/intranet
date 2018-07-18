@@ -8,10 +8,13 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ViajesComponent } from './viajes/viajes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesRoutingModule } from './pages.routes';
+import { FormsModule } from '@angular/forms';
+import { OrdenComponent } from './caja/orden.component';
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
+    FormsModule
   ],
   declarations: [
     BusComponent,
@@ -20,7 +23,8 @@ import { PagesRoutingModule } from './pages.routes';
     RutasComponent,
     UsuariosComponent,
     ViajesComponent,
-    DashboardComponent
+    DashboardComponent,
+    OrdenComponent
   ]
 })
 export class PagesModule { }
