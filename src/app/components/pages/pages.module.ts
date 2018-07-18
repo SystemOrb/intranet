@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesRoutingModule } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { OrdenComponent } from './caja/orden.component';
+import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +25,8 @@ import { OrdenComponent } from './caja/orden.component';
     UsuariosComponent,
     ViajesComponent,
     DashboardComponent,
-    OrdenComponent
+    OrdenComponent,
+    OrderManifiestoComponent
   ]
 })
 export class PagesModule { }

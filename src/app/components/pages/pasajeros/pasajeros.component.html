@@ -1,3 +1,63 @@
-<p>
-  pasajeros works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Obtener un listado de viajes programados</h4>
+                <div class="table-responsive m-t-40">
+                    <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                        <div id="myTable_filter" class="dataTables_filter">
+                            <form #form="ngForm" (ngSubmit)="BusquedaViajesProgramados(form)" ngNativeValidate class="form-material">
+                                <label for="select">Ruta:</label>
+                                <label style="width:10em">
+                                <select [(ngModel)]="_intranet.Ruta" name="Ruta" class="form-control" aria-controls="myTable" required>  
+                                  <option [value]="r.idruta" *ngFor="let r of Rutas">
+                                      {{ r.ruta }}
+                                    </option>
+                                  </select>
+                                </label>
+                                <label>Fecha inicio:
+                                <input [(ngModel)]="_intranet.fechaInicio" name="fechaInicio" type="date" required  aria-controls="myTable">
+                              </label>
+                                <label>Fecha Fin:
+                                <input [(ngModel)]="_intranet.fechaFin" name="fechaFin" type="date" required  aria-controls="myTable">
+                              </label>
+                                <button type="submit" class="btn btn-primary">
+                                <span class="fa fa-search"></span>
+                              </button>
+                            </form>
+                        </div>
+                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Origen</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">Destino</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">Servicio</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Fecha</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Hora</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="_intranet.ListaViajes">
+                                <tr *ngFor="let lv of _intranet.ListaViajes" role="row" class="odd">
+                                    <td class="sorting_1"> {{ lv.origen }} </td>
+                                    <td>{{ lv.destino }} </td>
+                                    <td>{{ lv.tiposerv }} </td>
+                                    <td> {{ lv.fecha }} </td>
+                                    <td> {{ lv.hora }} </td>
+                                    <td>
+                                        <button (click)="childManifiesto(lv.idviaje)" class="btn btn-primary">
+                                      <i class="fa fa-eye"></i>
+                                    </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--<div class="dataTables_paginate paging_simple_numbers" id="myTable_paginate"><a class="paginate_button previous disabled" aria-controls="myTable" data-dt-idx="0" tabindex="0" id="myTable_previous">Previous</a>
+                            <a class="paginate_button next" aria-controls="myTable" data-dt-idx="7" tabindex="0" id="myTable_next">Next</a>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

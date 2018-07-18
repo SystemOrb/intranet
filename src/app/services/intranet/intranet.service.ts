@@ -3,12 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { HTTP_SERVICE } from '../services.config';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { ListadoViajesProgramados } from '../../models/viajes_programados/listadoViajes.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntranetService {
-  public searchDate: Date;
+  /*********************************************** */
+  // Data persistente
+  public searchDate: Date; // Cuadre de caja
+  // Manifiesto de pasajeros
+  public Ruta: number | string;
+  public fechaInicio: Date | string;
+  public fechaFin: Date | string;
+  public ListaViajes: ListadoViajesProgramados[] = [];
+
+  /*************************************************** */
   constructor(private _http: HttpClient) { }
 
   listadoTrabajadores(idrole: string | number, search: string) {
