@@ -1,3 +1,75 @@
-<p>
-  orden works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Cobranzas</h4>
+                <div class="table-responsive m-t-40">
+                    <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Cliente</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">DocPago</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">Fecha</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Efectivo</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;">Visa</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;">MasterCard</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let obs of Cobranza" role="row" class="odd">
+                                    <td class="sorting_1">{{ obs.cliente }} </td>
+                                    <td>{{ obs.docpago }}</td>
+                                    <td>{{ obs.fechaabono }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Creditos</h4>
+                <div class="table-responsive m-t-40">
+                    <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Cliente</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">Servicio</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">N° Documento</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Fecha</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;">Monto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ic of Creditos" role="row" class="odd">
+                                    <td class="sorting_1"> {{ ic.cliente }} </td>
+                                    <td> {{ ic.servicio }} </td>
+                                    <td> {{ ic.voucher }} </td>
+                                    <td> {{ ic.fechaemision }} </td>
+                                    <td> {{ ic.cargo }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center-div">
+            <div class="card text-center">
+                <div class="card-header h3">Resumen Caja</div>
+                <div class="card-body">
+                    <span>Efectivo:</span>&nbsp;<span>15</span><br>
+                    <span>Credito:</span>&nbsp;<span>15</span><br> Gastos Totales:
+                    <h3 class="h3">30</h3>
+                </div>
+            </div>
+        </div>
+    </div>

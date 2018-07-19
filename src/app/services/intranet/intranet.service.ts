@@ -58,4 +58,28 @@ export class IntranetService {
       })
     );
   }
+  manifiestoPasajeros(idviaje: string | number) {
+    let url = HTTP_SERVICE + 'manifiestopasajeros.php';
+    url += '?idviaje=' + idviaje;
+    return this._http.get(url).pipe(
+      map( (response: any) => {
+        return response;
+      }), catchError( (err: any) => {
+        console.error(err);
+        return new Observable<string | boolean>();
+      })
+    );
+  }
+  CuadreCaja(_key: string | number, fCobro: Date) {
+    let url = HTTP_SERVICE + 'cuadrecaja.php';
+    url += '?fecha=' + fCobro + '&idusuario=' + _key;
+    return this._http.get(url).pipe(
+      map( (response: any) => {
+        return response;
+      }), catchError( (err: any) => {
+        console.error(err);
+        return new Observable<string | boolean>();
+      })
+    );
+  }
 }

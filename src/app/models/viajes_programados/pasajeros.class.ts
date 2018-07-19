@@ -4,6 +4,7 @@ export class Pasajeros {
         public pasajero: string,
         public DNI: string,
         public nroasiento: string | number,
+        public nropasaje: string | number,
         public precio: string | number,
         public observacion: string,
         public origenruta: string,

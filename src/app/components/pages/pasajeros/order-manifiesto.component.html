@@ -1,3 +1,156 @@
-<p>
-  order-manifiesto works!
-</p>
+<div *ngIf="Ruta && Pasajeros && Bus && Tripulacion" class="container bg-default">
+    <div class="row">
+        <!-- col-md-4 col-6 -->
+        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title h5">Ruta</h4>
+                    <div class="row">
+                        <!-- col-md-4 col-6 -->
+                        <div [ngClass]="{'col-md-6 col-6': !isDevice}" class="text-bolder">
+                            <span><strong>Origen:</strong></span><br>
+                            <span><strong>Destino:</strong></span><br>
+                            <span><strong>N° Res:</strong></span><br>
+                            <hr *ngIf="!isDevice">
+                            <span><strong>Fecha:</strong></span><br>
+                            <span><strong>Hora:</strong></span><br>
+                        </div>
+                        <div [ngClass]="{'col-md-6 col-6': !isDevice}" class="">
+                            <span> {{ Ruta.origen }} </span><br>
+                            <span> {{ Ruta.destino }} </span><br>
+                            <span> {{ Ruta.nroresolucion }} </span><br>
+                            <span> {{ Ruta.fecha }} </span><br>
+                            <span> {{ Ruta.hora }} </span><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
+            <div [ngClass]="{'card': !isDevice, 'card-header': isDevice}">
+                <div class="card-body">
+                    <h4 class="card-title h5">Bus</h4>
+                    <div class="row">
+                        <!-- col-md-4 col-6 -->
+                        <div [ngClass]="{'col-md-5 col-6': !isDevice}" class="text-bolder">
+                            <span><strong>Código:</strong></span><br>
+                            <span><strong>Modelo:</strong></span><br><br *ngIf="!isDevice">
+                            <span><strong>Placa:</strong></span><br>
+                            <span><strong>Marca:</strong></span><br>
+                        </div>
+                        <div [ngClass]="{'col-md-5 col-6': !isDevice}">
+                            <span><strong>  </strong></span><br>
+                            <span><strong> {{ Bus.modelo }} </strong></span><br>
+                            <span><strong> {{ Bus.placa }} </strong></span><br>
+                            <span><strong> {{ Bus.marca }} </strong></span><br>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
+            <div [ngClass]="{'card': !isDevice, 'card-header': isDevice}">
+                <div class="card-body">
+                    <h4 class="card-title h5">Capacidad</h4>
+                    <div class="row">
+                        <!-- col-md-6 col-3 -->
+                        <div [ngClass]="{'col-md-6 col-3': !isDevice}" class="text-bolder">
+                            <span><strong>Capacidad:</strong></span><br>
+                            <span><strong></strong>N° Tripulación:</span><br>
+                            <span><strong></strong>N° Pasajeros</span><br>
+                            <span><strong>N° Pasajeros Oficina:</strong></span><br>
+                        </div>
+                        <div [ngClass]="{'col-md-6 col-3': !isDevice}">
+                            <span>Ninguno</span><br><br *ngIf="!isDevice">
+                            <span>Ninguno</span><br><br *ngIf="!isDevice">
+                            <span>Ninguno</span><br><br *ngIf="!isDevice">
+                            <span>Ninguno</span><br><br *ngIf="!isDevice">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h2 class="h2 text-center"> Tripulación </h2>
+    <div class="row bg-default">
+        <!-- col-md-6 col-12 text-center -->
+        <div [ngClass]="{'col-md-6 col-12': !isDevice, 'card bg-default text-secondary': isDevice}">
+            <div [ngClass]="{'card': !isDevice, 'card-header': isDevice}">
+                <div class="card-body">
+                    <div class="row">
+                        <div [ngClass]="{'col-md-5 col-3': !isDevice}">
+                            <span>Piloto:</span><br>
+                            <span>Copiloto:</span><br>
+                            <span>Auxiliar:</span><br>
+                        </div>
+                        <div [ngClass]="{'col-md-5 col-3': !isDevice}">
+                            <span> {{ Tripulacion.piloto }} </span>
+                            <span *ngIf="!Tripulacion.piloto"> Sin Resultados </span><br>
+                            <span> {{ Tripulacion.copiloto }} </span>
+                            <span *ngIf="!Tripulacion.copiloto"> Sin Resultados </span><br>
+                            <span> {{ Tripulacion.auxiliar }} </span>
+                            <span *ngIf="!Tripulacion.auxiliar"> Sin Resultados </span><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- col-md-6 col-12 text-center -->
+        <div [ngClass]="{'col-md-6 col-12 text-center': !isDevice, 'card bg-default text-secondary': isDevice}">
+            <div [ngClass]="{'card': !isDevice, 'card-header': isDevice}">
+                <div class="card-body">
+                    <div class="row">
+                        <div [ngClass]="{'col-md-5 col-3': !isDevice}">
+                            <span>Piloto</span><br>
+                            <span>Copiloto</span><br>
+                        </div>
+                        <div [ngClass]="{'col-md-5 col-3': !isDevice}">
+                            <span> {{ Tripulacion.nlicenciapiloto }} </span>
+                            <span *ngIf="!Tripulacion.nlicenciapiloto">Sin resultados</span><br>
+                            <span> {{ Tripulacion.nlicenciacopiloto }} </span>
+                            <span *ngIf="!Tripulacion.nlicenciacopiloto">Sin resultados</span><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive m-t-40">
+                        <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                            <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Pasajero</th>
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">N° Documento</th>
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">N° Pasaje</th>
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Asiento</th>
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;">Precio</th>
+                                        <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;">Obersvación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let p of Pasajeros" role="row" class="odd">
+                                        <td class="sorting_1"> {{ p.pasajero }} </td>
+                                        <td> {{ p.DNI }} </td>
+                                        <td> {{ p.nropasaje }} </td>
+                                        <td> {{ p.nroasiento }} </td>
+                                        <td> {{ p.precio }} </td>
+                                        <td> {{ p.observacion }} </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

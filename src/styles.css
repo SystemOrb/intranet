@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.text-bolder span {
+    color: black;
+}
+
+.center-div {
+    margin: auto;
+    width: 50%;
+    border: 1px solid #cecece;
+    padding: 10px;
+}

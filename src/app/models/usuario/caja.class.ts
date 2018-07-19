@@ -3,6 +3,7 @@ export class Caja {
         public obs: string,
         public turno: string,
         public docpago: Date | string,
+        public fechaabono: Date | string,
         public origen: string,
         public destino: string,
         public montopagado: string | number,

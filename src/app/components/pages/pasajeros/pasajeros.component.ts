@@ -3,7 +3,6 @@ import { IntranetService } from '../../../services/intranet/intranet.service';
 import { ListadoRutas } from '../../../models/transporte/listadoRutas.class';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
-import { ListadoViajesProgramados } from '../../../models/viajes_programados/listadoViajes.class';
 import { Router } from '@angular/router';
 declare function init_plugins();
 @Component({
