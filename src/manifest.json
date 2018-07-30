@@ -1,0 +1,26 @@
+{
+    "name": "Intranet Empresa de transportes Ángel Divino SAC",
+    "short_name": "Tours AD",
+    "description": "Intranet Empresa Transportes Ángel Divino SAC.  Configuración y consultas.",
+    "icons": [{
+        "src": "assets/logito.png",
+        "sizes": "128x128",
+        "type": "image/png"
+    }, {
+        "src": "assets/logito.png",
+        "sizes": "152x152",
+        "type": "image/png"
+    }, {
+        "src": "assets/logito.png",
+        "sizes": "256x256",
+        "type": "image/png"
+    }, {
+        "src": "assets/logito.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#673ab7"
+}

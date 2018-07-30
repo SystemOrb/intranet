@@ -3,6 +3,7 @@ import { IntranetService } from '../../../services/intranet/intranet.service';
 import { ActivatedRoute } from '@angular/router';
 import { Caja } from '../../../models/usuario/caja.class';
 import { ItemCredito } from '../../../models/usuario/credito.class';
+import { Resumen } from '../../../models/usuario/resumen.class';
 declare function init_plugins();
 @Component({
   selector: 'app-orden',
@@ -14,6 +15,7 @@ export class OrdenComponent implements OnInit {
   idusuario: string | number;
   Cobranza: Caja[] = [];
   Creditos: ItemCredito[] = [];
+  Resumen: Resumen[] = [];
   constructor(private _intranet: IntranetService,
      private _get: ActivatedRoute) {
         this._get.params.subscribe(
@@ -33,6 +35,7 @@ export class OrdenComponent implements OnInit {
       (caja: any) => {
         this.Cobranza = caja.cobranzas;
         this.Creditos = caja.itemcredito;
+        this.Resumen = caja.resumen;
       }
     );
   }

@@ -21,9 +21,9 @@
                                     <td class="sorting_1">{{ obs.cliente }} </td>
                                     <td>{{ obs.docpago }}</td>
                                     <td>{{ obs.fechaabono }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td> {{ obs.efectivo }} </td>
+                                    <td> {{ obs.visa }} </td>
+                                    <td> {{ obs.mastercard }} </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -66,9 +66,9 @@
             <div class="card text-center">
                 <div class="card-header h3">Resumen Caja</div>
                 <div class="card-body">
-                    <span>Efectivo:</span>&nbsp;<span>15</span><br>
-                    <span>Credito:</span>&nbsp;<span>15</span><br> Gastos Totales:
-                    <h3 class="h3">30</h3>
+                    <span *ngFor="let c of Resumen"> {{ c.tipo }}
+                        Monto: ${{ c.monto }} #{{ c.orden }}<br>
+                    </span>
                 </div>
             </div>
         </div>
