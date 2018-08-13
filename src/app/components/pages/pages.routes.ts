@@ -9,6 +9,8 @@ import { CajaComponent } from './caja/caja.component';
 import { BusComponent } from './bus/bus.component';
 import { OrdenComponent } from './caja/orden.component';
 import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component';
+import { TableOfflineComponent } from './offline/manifiesto/table-offline.component';
+import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-manifiesto-offline.component';
 
 
 
@@ -18,6 +20,8 @@ const routes: Routes = [
     { path: 'usuarios', component: UsuariosComponent, data: {title: 'Usuarios'} },
     { path: 'pasajeros', component: PasajerosComponent, data: {title: 'Manifiesto de Pasajeros'} },
     { path: 'manifiesto/pasajeros/:idviaje', component: OrderManifiestoComponent, data: {title: 'Manifiesto de Pasajeros'} },
+    { path: 'manifiesto/offline/pasajeros', component: TableOfflineComponent, data: {title: 'Manifiestos guardados'} },
+    { path: 'manifiesto/offline/pasajeros/report', component: OrderManifiestoOfflineComponent, data: {title: 'Manifiestos guardados'} },
     { path: 'rutas', component: RutasComponent, data: {title: 'Rutas'}},
     { path: 'caja', component: CajaComponent, data: {title: 'Cuadre de caja'} },
     { path: 'orden_caja/:id/:date', component: OrdenComponent, data: {title: 'Cuadre de caja'} },

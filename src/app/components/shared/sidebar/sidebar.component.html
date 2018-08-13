@@ -6,21 +6,36 @@
             <ul id="sidebarnav">
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-clipboard-account"></i>
-                    <span class="hide-menu">Dashboard <span class="label label-rouded label-themecolor pull-right">4</span></span></a>
+
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-clipboard-account"></i>
+                        <span class="hide-menu">Clientes <span class="label label-rouded label-themecolor pull-right">4</span></span>
+                </a>
                     <ul aria-expanded="false" class="collapse">
-                        <!--<li><a [routerLink]="['/usuarios']">Información personal </a></li>-->
-                        <!--<li><a [routerLink]="['/']">ROL</a></li>-->
-                        <li><a [routerLink]="['/caja']">Cuadre de caja</a></li>
+                        <div *ngIf="displayMenu">
+                            <!--<li><a [routerLink]="['/usuarios']">Información personal </a></li>-->
+                            <!--<li><a [routerLink]="['/']">ROL</a></li>-->
+                            <li><a [routerLink]="['/caja']">Cuadre de caja</a></li>
+                        </div>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-truck"></i>
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-truck"></i>
                     <span class="hide-menu">Transporte</span></a>
+                    <ul *ngIf="displayMenu" aria-expanded="false" class="collapse">
+                        <div *ngIf="displayMenu">
+                            <!--<li><a [routerLink]="['/viajes']">Viajes</a></li>-->
+                            <!--<li><a [routerLink]="['/rutas']">Rutas</a></li>-->
+                            <li><a [routerLink]="['/pasajeros']">Pasajeros</a></li>
+                            <!--<li><a [routerLink]="['/bus']">Buses</a></li>-->
+                        </div>
+                    </ul>
+                </li>
+                <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-database-minus"></i>
+                    <span class="hide-menu">Almacenado</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <!--<li><a [routerLink]="['/viajes']">Viajes</a></li>-->
-                        <!--<li><a [routerLink]="['/rutas']">Rutas</a></li>-->
-                        <li><a [routerLink]="['/pasajeros']">Pasajeros</a></li>
-                        <!--<li><a [routerLink]="['/bus']">Buses</a></li>-->
+                        <li><a [routerLink]="['/manifiesto/offline/pasajeros']">Pasajeros</a></li>
+                        <!--<li><a [routerLink]="['/pasajeros']">Pasajeros</a></li>-->
                     </ul>
                 </li>
             </ul>

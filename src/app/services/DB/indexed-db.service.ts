@@ -44,5 +44,16 @@ export class IndexedDBService {
       });
     });
   }
+  getDBIndex(collection: string, _key: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._db.getByKey(collection, _key).then(
+        (resultset: any) => {
+          resolve(resultset);
+        }, (Exception) => {
+          reject(Exception);
+        }
+      );
+    });
+  }
 }
 

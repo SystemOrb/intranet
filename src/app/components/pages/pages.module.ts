@@ -11,6 +11,8 @@ import { PagesRoutingModule } from './pages.routes';
 import { FormsModule } from '@angular/forms';
 import { OrdenComponent } from './caja/orden.component';
 import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component';
+import { TableOfflineComponent } from './offline/manifiesto/table-offline.component';
+import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-manifiesto-offline.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +28,9 @@ import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component
     ViajesComponent,
     DashboardComponent,
     OrdenComponent,
-    OrderManifiestoComponent
+    OrderManifiestoComponent,
+    TableOfflineComponent,
+    OrderManifiestoOfflineComponent
   ]
 })
 export class PagesModule { }
