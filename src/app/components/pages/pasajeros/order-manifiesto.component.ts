@@ -5,6 +5,7 @@ import { Bus } from '../../../models/viajes_programados/bus.class';
 import { Pasajeros } from '../../../models/viajes_programados/pasajeros.class';
 import { Ruta } from '../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../models/viajes_programados/tripulacion.class';
+import { IndexedDBService } from '../../../services/DB/indexed-db.service';
 declare const swal: any;
 declare function init_plugins();
 @Component({
@@ -20,7 +21,8 @@ export class OrderManifiestoComponent implements OnInit {
   Ruta: Ruta;
   Tripulacion: Tripulacion;
   isDevice: boolean;
-  constructor(private _intranet: IntranetService, private _param: ActivatedRoute) {
+  constructor(private _intranet: IntranetService, private _param: ActivatedRoute,
+  private _storage: IndexedDBService) {
     this._param.params.subscribe(
       (get: any) => {
         this.idviaje = get['idviaje'];
@@ -76,6 +78,15 @@ export class OrderManifiestoComponent implements OnInit {
           'Tripulacion': this.Tripulacion,
           'Pasajeros': this.Pasajeros
         };
+        // Save on local storage
+        const storage = await this._storage.creaDB('manifiesto_pasajeros');
+         if (storage.status) {
+           const insertResult = await this._storage.insertData(JSON.stringify(LOCAL_DB), 'manifiesto_pasajeros', storage._db);
+           if (insertResult) {
+             swal('Notificación', 'Tu reporte ha sido archivado correctamente', 'success');
+             return;
+           }
+         }
       } catch (error) {
         throw error;
       }

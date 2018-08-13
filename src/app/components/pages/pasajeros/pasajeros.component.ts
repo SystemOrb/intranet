@@ -4,6 +4,7 @@ import { ListadoRutas } from '../../../models/transporte/listadoRutas.class';
 import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
+import { IndexedDBService } from '../../../services/DB/indexed-db.service';
 declare function init_plugins();
 @Component({
   selector: 'app-pasajeros',
@@ -12,12 +13,16 @@ declare function init_plugins();
 })
 export class PasajerosComponent implements OnInit {
   Rutas: ListadoRutas[] = [];
-  constructor(public _intranet: IntranetService, private _route: Router) {
+  constructor(public _intranet: IntranetService, private _route: Router,
+    private _storage: IndexedDBService) {
    }
 
   ngOnInit() {
     init_plugins();
     this.listadoDeRutas();
+    setTimeout((): void => {
+      this.getData();
+    }, 500);
   }
   listadoDeRutas() {
     this._intranet.listadoRutas().subscribe(
@@ -44,5 +49,20 @@ export class PasajerosComponent implements OnInit {
   }
   childManifiesto(idviaje: number | string) {
     this._route.navigate(['/manifiesto/pasajeros', idviaje]);
+  }
+  async getData() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const storage = await this._storage.creaDB('manifiesto_pasajeros');
+        if (storage.status) {
+          const GetManifiestoOffline = await this._storage.getDBStorage('manifiesto_pasajeros');
+          console.log(GetManifiestoOffline);
+        } else {
+          throw new Error('Hubo un error al intentar acceder a la base de datos offline' + storage);
+        }
+      } catch (error) {
+        throw error;
+      }
+    });
   }
 }
