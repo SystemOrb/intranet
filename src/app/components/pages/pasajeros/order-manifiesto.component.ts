@@ -5,6 +5,7 @@ import { Bus } from '../../../models/viajes_programados/bus.class';
 import { Pasajeros } from '../../../models/viajes_programados/pasajeros.class';
 import { Ruta } from '../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../models/viajes_programados/tripulacion.class';
+declare const swal: any;
 declare function init_plugins();
 @Component({
   selector: 'app-order-manifiesto',
@@ -48,5 +49,36 @@ export class OrderManifiestoComponent implements OnInit {
       }
     );
   }
-
+  confirmation() {
+    swal({
+      title: '¿Deseas guardar este reporte en tu dispositivo?',
+      text: 'Ocupamos tu memoria, para poder acceder a este reporte más adelante inclusive sin conexión a internet',
+      icon: 'info',
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal('Tu reporte ha sido guardado', {
+          icon: 'success',
+        });
+        this.saveLocalDB();
+      }
+    });
+  }
+  async saveLocalDB() {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const LOCAL_DB = {
+          'Ruta': this.Ruta,
+          'idviaje': this.idviaje,
+          'Bus': this.Bus,
+          'Tripulacion': this.Tripulacion,
+          'Pasajeros': this.Pasajeros
+        };
+      } catch (error) {
+        throw error;
+      }
+    });
+  }
 }

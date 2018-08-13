@@ -1,1 +1,1 @@
-export const HTTP_SERVICE = 'http://144.217.203.24/angeldivino/administracion/interfaz/';
+export const HTTP_SERVICE = 'https://angeldivino.digitalkhipuq.com/angeldivino/administracion/interfaz/';

@@ -8,7 +8,7 @@ import { AuthService } from './auth/auth.service';
   ],
   providers: [
     IntranetService,
-    AuthService
+    AuthService,
   ],
   declarations: []
 })

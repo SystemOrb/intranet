@@ -23,5 +23,20 @@
                 "/assets/**"
             ]
         }
+    }],
+    "dataGroups": [{
+        "name": "angeldivino-api",
+        "urls": [
+            "/pasajeros",
+            "/caja",
+            "/manifiesto/pasajeros/:idviaje",
+            "/orden_caja/:id/:date"
+        ],
+        "cacheConfig": {
+            "strategy": "freshness",
+            "maxSize": 15,
+            "maxAge": "1h",
+            "timeout": "5s"
+        }
     }]
 }
