@@ -22,7 +22,7 @@
                 <li>
                     <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-truck"></i>
                     <span class="hide-menu">Transporte</span></a>
-                    <ul *ngIf="displayMenu" aria-expanded="false" class="collapse">
+                    <ul aria-expanded="false" class="collapse">
                         <div *ngIf="displayMenu">
                             <!--<li><a [routerLink]="['/viajes']">Viajes</a></li>-->
                             <!--<li><a [routerLink]="['/rutas']">Rutas</a></li>-->
@@ -35,6 +35,7 @@
                     <span class="hide-menu">Almacenado</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a [routerLink]="['/manifiesto/offline/pasajeros']">Pasajeros</a></li>
+                        <li><a [routerLink]="['/cuadre/offline/caja']">Caja</a></li>
                         <!--<li><a [routerLink]="['/pasajeros']">Pasajeros</a></li>-->
                     </ul>
                 </li>

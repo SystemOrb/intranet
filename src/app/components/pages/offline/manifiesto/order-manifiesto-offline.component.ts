@@ -46,7 +46,7 @@ export class OrderManifiestoOfflineComponent implements OnInit {
   async getData() {
     return new Promise(async (resolve, reject) => {
       try {
-        const storage = await this._storage.creaDB('manifiesto_pasajeros');
+        const storage = await this._storage.creaDB('manifiesto_pasajeros', 'manifiesto');
         if (storage.status) {
           const GetManifiestoOffline = await this._storage.getDBStorage('manifiesto_pasajeros');
           resolve({

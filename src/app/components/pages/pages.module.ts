@@ -13,6 +13,8 @@ import { OrdenComponent } from './caja/orden.component';
 import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component';
 import { TableOfflineComponent } from './offline/manifiesto/table-offline.component';
 import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-manifiesto-offline.component';
+import { TableOfflineCajaComponent } from './offline/caja/table-offline-caja.component';
+import { OrderOfflineCajaComponent } from './offline/caja/order-offline-caja.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -30,7 +32,9 @@ import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-mani
     OrdenComponent,
     OrderManifiestoComponent,
     TableOfflineComponent,
-    OrderManifiestoOfflineComponent
+    OrderManifiestoOfflineComponent,
+    TableOfflineCajaComponent,
+    OrderOfflineCajaComponent
   ]
 })
 export class PagesModule { }

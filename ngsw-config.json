@@ -32,7 +32,9 @@
             "/manifiesto/pasajeros/:idviaje",
             "/orden_caja/:id/:date",
             "/manifiesto/offline/pasajeros",
-            "/manifiesto/offline/pasajeros/report"
+            "/manifiesto/offline/pasajeros/report",
+            "/cuadre/offline/caja",
+            "/cuadre/offline/caja/report"
         ],
         "cacheConfig": {
             "strategy": "freshness",

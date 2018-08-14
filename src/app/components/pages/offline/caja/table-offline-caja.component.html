@@ -8,21 +8,15 @@
                         <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
                             <thead>
                                 <tr role="row">
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Origen</th>
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">Destino</th>
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">Resolución</th>
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Fecha</th>
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Hora</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Turno</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">Fecha</th>
                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let tr of displayTable" role="row" class="odd">
-                                    <td class="sorting_1"> {{ tr._data.Ruta.origen }} </td>
-                                    <td> {{ tr._data.Ruta.destino }} </td>
-                                    <td> {{ tr._data.Ruta.nroresolucion }} </td>
-                                    <td> {{ tr._data.Ruta.hora }} </td>
-                                    <td> {{ tr._data.Ruta.fecha }} </td>
+                                    <td class="sorting_1"> {{ tr._data.Cobranza[0].turno }} </td>
+                                    <td> {{ tr._data.date }} </td>
                                     <td>
                                         <button (click)="linkOffline(tr.key)" class="btn btn-primary">
                                       <i class="fa fa-eye"></i>

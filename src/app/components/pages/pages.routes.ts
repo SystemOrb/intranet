@@ -11,6 +11,8 @@ import { OrdenComponent } from './caja/orden.component';
 import { OrderManifiestoComponent } from './pasajeros/order-manifiesto.component';
 import { TableOfflineComponent } from './offline/manifiesto/table-offline.component';
 import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-manifiesto-offline.component';
+import { TableOfflineCajaComponent } from './offline/caja/table-offline-caja.component';
+import { OrderOfflineCajaComponent } from './offline/caja/order-offline-caja.component';
 
 
 
@@ -24,6 +26,8 @@ const routes: Routes = [
     { path: 'manifiesto/offline/pasajeros/report', component: OrderManifiestoOfflineComponent, data: {title: 'Manifiestos guardados'} },
     { path: 'rutas', component: RutasComponent, data: {title: 'Rutas'}},
     { path: 'caja', component: CajaComponent, data: {title: 'Cuadre de caja'} },
+    { path: 'cuadre/offline/caja', component: TableOfflineCajaComponent, data: {title: 'Cuadre de caja'} },
+    { path: 'cuadre/offline/caja/report', component: OrderOfflineCajaComponent, data: {title: 'Cuadre de caja'} },
     { path: 'orden_caja/:id/:date', component: OrdenComponent, data: {title: 'Cuadre de caja'} },
     { path: 'bus', component: BusComponent, data: {title: 'Bus'} },
     { path: '', pathMatch: 'full', redirectTo: '/home' }

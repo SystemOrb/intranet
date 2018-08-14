@@ -1,30 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { IndexedDBService } from '../../../../services/DB/indexed-db.service';
 import { Router } from '@angular/router';
+import { IndexedDB2Service } from '../../../../services/DB/indexed-db2.service';
 declare function init_plugins();
 declare const swal: any;
 @Component({
-  selector: 'app-table-offline',
-  templateUrl: './table-offline.component.html',
+  selector: 'app-table-offline-caja',
+  templateUrl: './table-offline-caja.component.html',
   styles: []
 })
-export class TableOfflineComponent implements OnInit {
+export class TableOfflineCajaComponent implements OnInit {
   displayTable: any[] = [];
-  constructor(private _storage: IndexedDBService, private _route: Router) {
+  constructor(private _storage: IndexedDB2Service, private _route: Router) {
     init_plugins();
-  }
+   }
+
   async ngOnInit() {
     this.displayTable = await this.createTable();
   }
   async getData() {
     return new Promise(async (resolve, reject) => {
       try {
-        const storage = await this._storage.creaDB('manifiesto_pasajeros', 'manifiesto');
+        const storage = await this._storage.creaDB('cuadre_caja', 'caja');
         if (storage.status) {
-          const GetManifiestoOffline = await this._storage.getDBStorage('manifiesto_pasajeros');
+          const GetCajaOffline = await this._storage.getDBStorage('cuadre_caja');
           resolve({
             status: true,
-            data: GetManifiestoOffline
+            data: GetCajaOffline
           });
         } else {
           throw new Error('Hubo un error al intentar acceder a la base de datos offline' + storage);
@@ -42,19 +43,12 @@ export class TableOfflineComponent implements OnInit {
         for (const td of CRUD.data) {
           newTable.push({
             key: td.id,
-            _data: JSON.parse(td.manifiesto)
+            _data: JSON.parse(td.caja)
           });
         }
         resolve(newTable);
       } else {
         reject(false);
-      }
-    });
-  }
-  linkOffline(_key: number) {
-    this._route.navigate([`/manifiesto/offline/pasajeros/report`], {
-      queryParams: {
-        cache_id: _key
       }
     });
   }
@@ -79,7 +73,7 @@ export class TableOfflineComponent implements OnInit {
       let flag = 0;
       for (const rm of db.data) {
         if (Number(rm.id) === (Number(_key))) {
-          const itemRemoved = await this._storage.DeleteDB('manifiesto_pasajeros', Number(rm.id));
+          const itemRemoved = await this._storage.DeleteDB('cuadre_caja', Number(rm.id));
           if (itemRemoved) {
             this.displayTable.splice(flag, 1);
             swal('Confirmación!', 'Tu reporte ha sido eliminado', 'success');
@@ -88,6 +82,13 @@ export class TableOfflineComponent implements OnInit {
         flag++;
       }
       resolve(true);
+    });
+  }
+  linkOffline(_key: number) {
+    this._route.navigate([`/cuadre/offline/caja/report`], {
+      queryParams: {
+        cache_id: _key
+      }
     });
   }
 }

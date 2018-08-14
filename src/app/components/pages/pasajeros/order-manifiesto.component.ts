@@ -79,7 +79,7 @@ export class OrderManifiestoComponent implements OnInit {
           'Pasajeros': this.Pasajeros
         };
         // Save on local storage
-        const storage = await this._storage.creaDB('manifiesto_pasajeros');
+        const storage = await this._storage.creaDB('manifiesto_pasajeros', 'manifiesto');
          if (storage.status) {
            const insertResult = await this._storage.insertData(JSON.stringify(LOCAL_DB), 'manifiesto_pasajeros', storage._db);
            if (insertResult) {
