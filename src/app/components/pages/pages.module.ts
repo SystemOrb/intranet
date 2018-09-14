@@ -15,6 +15,9 @@ import { TableOfflineComponent } from './offline/manifiesto/table-offline.compon
 import { OrderManifiestoOfflineComponent } from './offline/manifiesto/order-manifiesto-offline.component';
 import { TableOfflineCajaComponent } from './offline/caja/table-offline-caja.component';
 import { OrderOfflineCajaComponent } from './offline/caja/order-offline-caja.component';
+import { CreaUsuarioComponent } from './usuarios/crea-usuario.component';
+import { SistemaClientesComponent } from './offline/sistema-clientes/sistema-clientes.component';
+import { SistemaClientesReporteComponent } from './offline/sistema-clientes/sistema-clientes-reporte.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +37,10 @@ import { OrderOfflineCajaComponent } from './offline/caja/order-offline-caja.com
     TableOfflineComponent,
     OrderManifiestoOfflineComponent,
     TableOfflineCajaComponent,
-    OrderOfflineCajaComponent
+    OrderOfflineCajaComponent,
+    SistemaClientesComponent,
+    SistemaClientesReporteComponent,
+    CreaUsuarioComponent
   ]
 })
 export class PagesModule { }

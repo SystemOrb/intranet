@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Listado de usuarios guardados</h4>
+                <div class="table-responsive m-t-40">
+                    <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
+                        <table id="myTable" class="table table-bordered table-striped dataTable no-footer" role="grid" aria-describedby="myTable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 224px;">Nombre</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 55px;">Documento</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">ROL</th>
+                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">TIPO</th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let td of displayTable" role="row" class="odd">
+                                    <td class="sorting_1"> {{ td._data.customer.nombrecompleto }} </td>
+                                    <td> {{ td._data.customer.nrodocc }} </td>
+                                    <td>
+                                        <span class="badge badge-success">{{ td._data.customer.roles }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-success" *ngIf="td._data.customer.tipo === 'N'">Natural</span>
+                                        <span class="badge badge-info" *ngIf="td._data.customer.tipo === 'J'">Juridico</span>
+                                    </td>
+                                    <td>
+                                        <button (click)="linkOffline(td.key)" class="btn btn-outline-success">
+                                      <i class="fa fa-eye"></i>
+                                    </button>
+                                        <button (click)="Confirmation(td.key)" style="margin-left: 5px" class="btn btn-outline-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

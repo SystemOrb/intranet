@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-12">
+        <div id="generateTable" class="card card-body printableArea">
+            <h3><b>{{ dataOffline._data.customer.nombrecompleto }}</b> <span class="pull-right"> </span></h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <address>
+                          <h3> &nbsp;<b class="text-danger"> {{ dataOffline._data.customer.nrodocc }}  </b></h3>
+                          <p class="text-muted m-l-5">
+                              <br> ROL:&nbsp;<span class="badge badge-success">{{ dataOffline._data.customer.roles }}</span>
+                              <br> Sexo: &nbsp;<span *ngIf="dataOffline._data.customer.sexo === 'M'" class="badge badge-info">Masculino</span>
+                                   <span *ngIf="dataOffline._data.customer.sexo === 'F'" class="badge badge-primary">Femenino</span> 
+                              <br>  
+                              Email: {{ dataOffline._data.customer.email }}
+                            </p>
+                      </address>
+                    </div>
+                    <div class="pull-right text-right">
+                        <address>
+                          <h3>Tipo de persona:</h3>
+                          <h4 *ngIf="dataOffline._data.customer.tipo === 'N'" class="font-bold">Natural</h4>
+                          <h4 *ngIf="dataOffline._data.customer.tipo === 'J'" class="font-bold">Júridico</h4>
+                          <p class="text-muted m-l-30">
+                              <br> Nacimiento: <span  class="badge badge-info">{{ dataOffline._data.customer.nacimiento | date }}</span>,
+                              <br> Telefono:&nbsp;
+                              <span >{{ dataOffline._data.customer.telefono }}</span>,
+                              <br> Estado civil: <span *ngIf="dataOffline._data.customer.estadocivil === 'S'" class="badge badge-info">Soltero</span>
+                              <span class="badge badge-dark" *ngIf="dataOffline._data.customer.estadocivil === 'C'">Casado</span>
+                              <br> Giro: 
+                              <span [ngSwitch]="dataOffline._data.customer.idgiro">
+                                  <span class="badge badge-success" *ngSwitchCase="1">Sin definir</span>
+                                  <span class="badge badge-success" *ngSwitchCase="2">Papelería</span>
+                                  <span class="badge badge-success" *ngSwitchCase="3">Grifo</span>
+                                  <span class="badge badge-success" *ngSwitchCase="4">Ferretería</span>
+                                  <span class="badge badge-success" *ngSwitchCase="5">Pinturas</span>
+                              </span>
+                            </p>
+                      </address>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive m-t-40" style="clear: both;">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Dirección</th>
+                                    <th class="text-right">Razón social</th>
+                                    <th class="text-right">Observación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span *ngIf="dataOffline._data.customer.direccion == null">
+                                        {{ dataOffline._data.customer.direccion }}
+                                        </span>
+                                        <span *ngIf="dataOffline._data.customer.direccion != null">
+                                         Ninguno
+                                    </span>
+                                    </td>
+                                    <td class="text-right"> {{ dataOffline._data.customer.razonsocial }} </td>
+                                    <td class="text-right">
+                                        <span *ngIf="dataOffline._data.customer.observacion == null">
+                                        {{ dataOffline._data.customer.observacion }}
+                                    </span>
+                                        <span *ngIf="dataOffline._data.customer.observacion != null">No aplica</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="text-right">
+                        <button (click)="loadPDF()" id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

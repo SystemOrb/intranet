@@ -1,7 +1,7 @@
 <div *ngIf="Ruta && Pasajeros && Bus && Tripulacion" class="container bg-default">
     <div class="row">
         <!-- col-md-4 col-6 -->
-        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
+        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary col-sm-12': isDevice}">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title h5">Ruta</h4>

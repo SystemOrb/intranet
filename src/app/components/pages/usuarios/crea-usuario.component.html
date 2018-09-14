@@ -1,0 +1,135 @@
+<div class="row">
+    <div *ngIf="updateFormMode" class="col-md-4">
+        <button (click)="confirmation();" class="btn btn-outline-success">
+                    <i class="fa fa-plug"></i>
+                    Guardar reporte
+        </button>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 *ngIf="create" class="card-title">Crear nuevo usuario</h4>
+                <h4 *ngIf="!create" class="card-title">Datos de usuario</h4>
+                <h6 class="card-subtitle">Formulario para insertar registros de nuevos clientes</h6>
+                <form method="GET" ngNativeValidate #formData="ngForm" (ngSubmit)="creaRegistro(formData)" class="form-material m-t-40">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="input">Tipo de persona</label>
+                            <select #value="ngModel" (change)="tipoFormulario(value)" [(ngModel)]="setterFormValues.tipo" required class="form-control form-control-line" name="tipoper">
+                              <option value="N">Natural</option>
+                              <option value="J">Juridico</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="input">Documento</label>
+                            <select (change)="setLongDoc(id)" #id="ngModel" [(ngModel)]="setterFormValues.tipodocid" required class="form-control form-control-line" name="tipodocid">
+                            <option disabled selected  value="">-- Selecciona un documento --</option>
+                            <option *ngFor="let doc of documentos" [value]="doc.idtipodoc">{{ doc.nombre }}</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="input">Número de documento</label>
+                            <input (keyup)="validateDocLong($event.target.value)" [(ngModel)]="setterFormValues.nrodoc" [disabled]="(!canWriteNum)" required name="nrodoc" class="form-control form-control-line" type="number">
+                        </div>
+                        <div *ngIf="juridico" class="form-group col-md-6">
+                            <label for="input">Razón social</label>
+                            <input class="form-control form-control-line" [(ngModel)]="setterFormValues.razonsocial" type="text" name="razonsocial">
+                        </div>
+                    </div>
+                    <h4 *ngIf="!juridico" class="card-title">
+                        Persona natural
+                    </h4>
+                    <div *ngIf="!juridico" class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="input">Ape. paterno</label>
+                            <input [(ngModel)]="setterFormValues.ape_pat" name="ape_pat" type="text" required class="form-control form-control-line">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="input">Ape. Materno</label>
+                            <input [(ngModel)]="setterFormValues.ape_mat" name="ape_mat" type="text" required class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div *ngIf="!juridico" class="form-group col-md-6">
+                            <label for="input">Nombre(s)</label>
+                            <input [(ngModel)]="setterFormValues.nombre" name="nombre" required type="text" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="input">Teléfono</label>
+                            <input [(ngModel)]="setterFormValues.telefono" name="telefono" required type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="date">Nacimiento</label>
+                            <input [(ngModel)]="setterFormValues.nacimiento" name="nacimiento" class="form-control form-control-line" type="date" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="select">Sexo</label>
+                            <select [(ngModel)]="setterFormValues.sexo" name="sexo" class="form-control form-control-line" required>
+                               <option selected disabled value="">-- Selecciona una opción --</option>
+                                <option value="F">Femenino</option>
+                                <option value="M">Masculino</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="select">Estado Civil:</label>
+                            <select [(ngModel)]="setterFormValues.estadocivil" name="estadocivil" class="form-control form-control-line" required>
+                               <option selected disabled value="">-- Selecciona una opción --</option>
+                                <option value="S">Soltero</option>
+                                <option value="C">Casado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="input">Dirección</label>
+                        <input [(ngModel)]="setterFormValues.direccion" name="direccion" type="text" class="form-control form-control-line" placeholder="Apartamento, calle, etc">
+                    </div>
+                    <h4 class="card-title">Otros datos</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Email</label>
+                            <input [(ngModel)]="setterFormValues.email" name="email" class="form-control form-control-line" type="email">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Observación</label>
+                            <input [(ngModel)]="setterFormValues.observacion" name="observacion" class="form-control form-control-line" type="text">
+                        </div>
+                    </div>
+                    <h4 class="card-title">Registro</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Usuario</label>
+                            <input [(ngModel)]="setterFormValues.usuario" name="usuario" class="form-control form-control-line" type="text">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Clave</label>
+                            <input [(ngModel)]="setterFormValues.clave" name="clave" class="form-control form-control-line" type="password">
+                        </div>
+                    </div>
+                    <div *ngIf="juridico" class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="input">Contacto</label>
+                            <input [(ngModel)]="setterFormValues.contacto" name="contacto" class="form-control form-control-line" type="text">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="input">Giro</label>
+                            <select [(ngModel)]="setterFormValues.idgiro" name="idgiro" required class="form-control">
+                                    <option selected disabled value="">-- Selecciona una opción --</option>
+                                    <option *ngFor="let g of giros" [value]="g.idgiro | number">{{ g.nombre }}</option>
+                                </select>
+                        </div>
+                    </div>
+                    <fieldset style="display:none">
+                        <input type="hidden" id="longitude" name="longitude" [(ngModel)]="longitudeDoc" value="">
+                        <input type="hidden" name="idpersona" [(ngModel)]="idpersona" value="">
+                        <input type="hidden" name="validate" [(ngModel)]="canSendForm" value="">
+                    </fieldset>
+                    <button type="submit" class="btn btn-outline-success">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
