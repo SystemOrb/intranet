@@ -13,7 +13,7 @@
                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 94px;">Resolución</th>
                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Fecha</th>
                                     <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 104px;">Hora</th>
-                                    <th class="sorting" tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;"></th>
+                                    <th tabindex="0" aria-controls="myTable" rowspan="1" colspan="1" style="width: 85px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -24,10 +24,10 @@
                                     <td> {{ tr._data.Ruta.hora }} </td>
                                     <td> {{ tr._data.Ruta.fecha }} </td>
                                     <td>
-                                        <button (click)="linkOffline(tr.key)" class="btn btn-primary">
+                                        <button (click)="linkOffline(tr.key)" class="btn btn-outline-success">
                                       <i class="fa fa-eye"></i>
                                     </button>
-                                        <button (click)="Confirmation(tr.key)" style="margin-left: 5px" class="btn btn-danger">
+                                        <button (click)="Confirmation(tr.key)" style="margin-left: 5px" class="btn btn-outline-danger">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                     </td>

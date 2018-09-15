@@ -3,9 +3,12 @@
         <button (click)="confirmation();" class="btn btn-outline-success">
                     <i class="fa fa-plug"></i>
                     Guardar reporte
+        </button> &nbsp;
+        <button (click)="loadPDF();" class="btn btn-outline-info">
+            <i class="fa fa-print"></i> Exportar PDF
         </button>
     </div>
-    <div class="col-md-12">
+    <div id="generateTable1" class="col-md-12">
         <div class="card">
             <div class="card-body">
                 <h4 *ngIf="create" class="card-title">Crear nuevo usuario</h4>

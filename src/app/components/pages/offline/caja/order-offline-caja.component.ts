@@ -5,6 +5,7 @@ import { Resumen } from '../../../../models/usuario/resumen.class';
 import { IntranetService } from '../../../../services/intranet/intranet.service';
 import { ActivatedRoute } from '@angular/router';
 import { IndexedDB2Service } from '../../../../services/DB/indexed-db2.service';
+import { PdfGeneratorService } from '../../../../services/intranet/pdf-generator.service';
 declare function init_plugins();
 @Component({
   selector: 'app-order-offline-caja',
@@ -21,7 +22,8 @@ export class OrderOfflineCajaComponent implements OnInit {
   dbCacheKey: number;
   dataOffline: any;
   constructor(private _intranet: IntranetService,
-    private _query: ActivatedRoute, private _storage: IndexedDB2Service) {
+    private _query: ActivatedRoute, private _storage: IndexedDB2Service,
+    private _pdf: PdfGeneratorService) {
       this._query.queryParams.subscribe( (get: any) => {
         this.dbCacheKey = get['cache_id'];
       });
@@ -72,5 +74,8 @@ export class OrderOfflineCajaComponent implements OnInit {
         reject(false);
       }
     });
+  }
+  loadPDF() {
+    this._pdf.loadPDF(document.getElementById('generateTable1'), `orden-${this.date}`);
   }
 }

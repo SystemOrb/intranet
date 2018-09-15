@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 import { SystemCustomer } from '../../../models/usuario/SystemCustomer.class';
 import { HTTP_SERVICE } from '../../../services/services.config';
 import { IndexedDB3Service } from '../../../services/DB/indexed-db3.service';
+import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
 declare function init_plugins();
 declare const swal: any;
 @Component({
@@ -29,7 +30,7 @@ export class CreaUsuarioComponent implements OnInit {
   setterFormValues: SystemCustomer | any = ''; // Si recibe una ID y existe entonces seteamos el formulario automatico
   updateFormMode: boolean = false; // Condicional para el HTML por si el formulario no se puede editar
   constructor(private _param: ActivatedRoute, private _system: CustomersService,
-    private _router: Router, private _storage: IndexedDB3Service) {
+    private _router: Router, private _storage: IndexedDB3Service, private _pdf: PdfGeneratorService) {
     this._param.params.subscribe(
       (_get: PartialObserver<any> | any) => {
         // Validamos la ID que se manda
@@ -225,6 +226,9 @@ export class CreaUsuarioComponent implements OnInit {
     } catch (error) {
       throw (error);
     }
+  }
+  loadPDF() {
+    this._pdf.loadPDF(document.getElementById('generateTable1'), this.setterFormValues.nombrecompleto);
   }
 }
 

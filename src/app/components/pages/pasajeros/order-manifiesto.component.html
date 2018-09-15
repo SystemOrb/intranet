@@ -1,4 +1,4 @@
-<div *ngIf="Ruta && Pasajeros && Bus && Tripulacion" class="container bg-default">
+<div id="generateTable1" *ngIf="Ruta && Pasajeros && Bus && Tripulacion" class="container bg-default">
     <div class="row">
         <!-- col-md-4 col-6 -->
         <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div [ngClass]="{'col-md-4 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
+        <div [ngClass]="{'col-md-8 col-6': !isDevice, 'card bg-default text-secondary': isDevice}">
             <div [ngClass]="{'card': !isDevice, 'card-header': isDevice}">
                 <div class="card-body">
                     <h4 class="card-title h5">Capacidad</h4>
@@ -120,12 +120,14 @@
 
     </div>
     <div class="col-lg-20">
-        <div class="col-sm-4">
-            <button (click)="confirmation()" class="btn btn-success">
+        <div class="col-sm-6">
+            <button (click)="confirmation()" class="btn btn-outline-success">
+                <i class="fa fa-save"></i>
                 Guardar en mi dispositivo
             </button> &nbsp;
-            <button class="btn btn-info">
-                Exportar
+            <button (click)="loadPDF()" class="btn btn-outline-info">
+                <i class="fa fa-print"></i>
+                Exportar PDF
             </button>
         </div>
     </div>

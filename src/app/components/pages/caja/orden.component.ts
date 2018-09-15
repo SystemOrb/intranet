@@ -5,6 +5,7 @@ import { Caja } from '../../../models/usuario/caja.class';
 import { ItemCredito } from '../../../models/usuario/credito.class';
 import { Resumen } from '../../../models/usuario/resumen.class';
 import { IndexedDB2Service } from '../../../services/DB/indexed-db2.service';
+import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
 declare function init_plugins();
 declare const swal: any;
 @Component({
@@ -19,7 +20,8 @@ export class OrdenComponent implements OnInit {
   Creditos: ItemCredito[] = [];
   Resumen: Resumen[] = [];
   constructor(private _intranet: IntranetService,
-     private _get: ActivatedRoute, private _storage: IndexedDB2Service) {
+     private _get: ActivatedRoute, private _storage: IndexedDB2Service,
+     private _pdf: PdfGeneratorService) {
         this._get.params.subscribe(
           (cuadreParametros: any) => {
             this.idusuario = cuadreParametros['id'];
@@ -81,5 +83,8 @@ export class OrdenComponent implements OnInit {
         throw error;
       }
     });
+  }
+  loadPDF() {
+    this._pdf.loadPDF(document.getElementById('generateTable1'), `orden-${this.date}`);
   }
 }

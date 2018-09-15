@@ -6,6 +6,7 @@ import { Pasajeros } from '../../../models/viajes_programados/pasajeros.class';
 import { Ruta } from '../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../models/viajes_programados/tripulacion.class';
 import { IndexedDBService } from '../../../services/DB/indexed-db.service';
+import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
 declare const swal: any;
 declare function init_plugins();
 @Component({
@@ -22,7 +23,7 @@ export class OrderManifiestoComponent implements OnInit {
   Tripulacion: Tripulacion;
   isDevice: boolean;
   constructor(private _intranet: IntranetService, private _param: ActivatedRoute,
-  private _storage: IndexedDBService) {
+  private _storage: IndexedDBService, private _pdf: PdfGeneratorService) {
     this._param.params.subscribe(
       (get: any) => {
         this.idviaje = get['idviaje'];
@@ -91,5 +92,8 @@ export class OrderManifiestoComponent implements OnInit {
         throw error;
       }
     });
+  }
+  loadPDF() {
+    this._pdf.loadPDF(document.getElementById('generateTable1'), this.idviaje.toString());
   }
 }

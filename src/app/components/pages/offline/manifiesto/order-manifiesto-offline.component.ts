@@ -5,6 +5,7 @@ import { Pasajeros } from '../../../../models/viajes_programados/pasajeros.class
 import { Bus } from '../../../../models/viajes_programados/bus.class';
 import { Ruta } from '../../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../../models/viajes_programados/tripulacion.class';
+import { PdfGeneratorService } from '../../../../services/intranet/pdf-generator.service';
 declare function init_plugins();
 @Component({
   selector: 'app-order-manifiesto-offline',
@@ -21,7 +22,8 @@ export class OrderManifiestoOfflineComponent implements OnInit {
   Ruta: Ruta;
   Tripulacion: Tripulacion;
   isDevice: boolean;
-  constructor(private _storage: IndexedDBService, private _query: ActivatedRoute) {
+  constructor(private _storage: IndexedDBService, private _query: ActivatedRoute,
+    private _pdf: PdfGeneratorService) {
     this._query.queryParams.subscribe( (get: any) => {
       this.dbCacheKey = get['cache_id'];
       const isMobile = navigator.userAgent.match(
@@ -80,5 +82,7 @@ export class OrderManifiestoOfflineComponent implements OnInit {
       }
     });
   }
-
+loadPDF() {
+  this._pdf.loadPDF(document.getElementById('generateTable1'), this.idviaje.toString());
+}
 }

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <div id="generateTable" class="card card-body printableArea">
+        <div id="generateTable1" class="card card-body printableArea">
             <h3><b>{{ dataOffline._data.customer.nombrecompleto }}</b> <span class="pull-right"> </span></h3>
             <hr>
             <div class="row">
@@ -17,7 +17,7 @@
                             </p>
                       </address>
                     </div>
-                    <div class="pull-right text-right">
+                    <div id="generateTable2" [ngClass]="{'pull-left': _pdf.render, 'pull-right': !_pdf.render}" class="text-right">
                         <address>
                           <h3>Tipo de persona:</h3>
                           <h4 *ngIf="dataOffline._data.customer.tipo === 'N'" class="font-bold">Natural</h4>
@@ -40,7 +40,7 @@
                       </address>
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div id="generateTable3" class="col-md-12">
                     <div class="table-responsive m-t-40" style="clear: both;">
                         <table class="table table-hover">
                             <thead>
@@ -76,7 +76,7 @@
                     <div class="clearfix"></div>
                     <hr>
                     <div class="text-right">
-                        <button (click)="loadPDF()" id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                        <button (click)="loadPdf();" id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
                     </div>
                 </div>
             </div>

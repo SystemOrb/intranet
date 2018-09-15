@@ -19,7 +19,8 @@ export class SistemaClientesReporteComponent implements OnInit {
   // Propiedades del manifiesto
   isDevice: boolean;
   giros: SystemGiros[] | any = [];
-  doc = new jsPDF(); // pdf
+  doc = new jsPDF('p', 'mm', 'a5'); // pdf
+  render: boolean = false;
   constructor(private _storage: IndexedDB3Service, private _query: ActivatedRoute,
     private _system: CustomersService, public _pdf: PdfGeneratorService) {
     this._query.queryParams.subscribe( (get: any) => {
@@ -92,20 +93,7 @@ export class SistemaClientesReporteComponent implements OnInit {
       );
     });
   }
-  loadPDF() {
-    const data = document.getElementById('generateTable');
-    html2canvas(data).then(canvas => {
-      // Few necessary setting options
-      const imgWidth = 200;
-      const pageHeight = 200;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      const heightLeft = imgHeight;
-
-      const contentDataURL = canvas.toDataURL('image/png');
-      const pdf = new jsPDF('p', 'mm', 'a5'); // A4 size page of PDF
-      const position = 0;
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-      pdf.save('MYPdf.pdf'); // Generated PDF
-    });
-  }
+    loadPdf() {
+      this._pdf.loadPDF(document.getElementById('generateTable1'), this.dataOffline._data.customer.nombrecompleto);
+    }
 }
