@@ -6,7 +6,6 @@ import { ItemCredito } from '../../../models/usuario/credito.class';
 import { Resumen } from '../../../models/usuario/resumen.class';
 import { IndexedDB2Service } from '../../../services/DB/indexed-db2.service';
 import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
-declare function init_plugins();
 declare const swal: any;
 @Component({
   selector: 'app-orden',
@@ -31,7 +30,6 @@ export class OrdenComponent implements OnInit {
      }
 
   ngOnInit() {
-    init_plugins();
     this.cuadreCajaUsuario();
   }
   cuadreCajaUsuario() {

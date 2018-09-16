@@ -10,7 +10,6 @@ import { SystemCustomer } from '../../../models/usuario/SystemCustomer.class';
 import { HTTP_SERVICE } from '../../../services/services.config';
 import { IndexedDB3Service } from '../../../services/DB/indexed-db3.service';
 import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
-declare function init_plugins();
 declare const swal: any;
 @Component({
   selector: 'app-crea-usuario',
@@ -45,7 +44,6 @@ export class CreaUsuarioComponent implements OnInit {
     );
   }
   async ngOnInit() {
-    init_plugins();
     // Inicializadores
     this.cargaDocumentos();
     this.cargaGiros();

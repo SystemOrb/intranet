@@ -7,7 +7,6 @@ import { PartialObserver } from 'rxjs';
 import { PdfGeneratorService } from '../../../../services/intranet/pdf-generator.service';
 import * as jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-declare function init_plugins();
 @Component({
   selector: 'app-sistema-clientes-reporte',
   templateUrl: './sistema-clientes-reporte.component.html',
@@ -36,7 +35,6 @@ export class SistemaClientesReporteComponent implements OnInit {
   }
 
   async ngOnInit() {
-    init_plugins();
     this.dataOffline = await this.createTable();
   }
   async getData(): Promise<any> {

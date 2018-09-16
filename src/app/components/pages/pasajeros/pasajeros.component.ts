@@ -5,7 +5,6 @@ import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { IndexedDBService } from '../../../services/DB/indexed-db.service';
-declare function init_plugins();
 @Component({
   selector: 'app-pasajeros',
   templateUrl: './pasajeros.component.html',
@@ -17,7 +16,6 @@ export class PasajerosComponent implements OnInit {
    }
 
   ngOnInit() {
-    init_plugins();
     this.listadoDeRutas();
   }
   listadoDeRutas() {

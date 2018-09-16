@@ -6,7 +6,6 @@ import { IntranetService } from '../../../../services/intranet/intranet.service'
 import { ActivatedRoute } from '@angular/router';
 import { IndexedDB2Service } from '../../../../services/DB/indexed-db2.service';
 import { PdfGeneratorService } from '../../../../services/intranet/pdf-generator.service';
-declare function init_plugins();
 @Component({
   selector: 'app-order-offline-caja',
   templateUrl: './order-offline-caja.component.html',
@@ -30,7 +29,6 @@ export class OrderOfflineCajaComponent implements OnInit {
     }
 
   async ngOnInit() {
-    init_plugins();
     this.dataOffline = await this.createTable();
     this.Cobranza = this.dataOffline._data.Cobranza;
     this.Creditos = this.dataOffline._data.Creditos;

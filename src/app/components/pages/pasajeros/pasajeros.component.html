@@ -41,11 +41,15 @@
                                 <tr *ngFor="let lv of _intranet.ListaViajes" role="row" class="odd">
                                     <td class="sorting_1"> {{ lv.origen }} </td>
                                     <td>{{ lv.destino }} </td>
-                                    <td>{{ lv.tiposerv }} </td>
+                                    <td>
+                                        <span class="badge badge-success">
+                                            {{ lv.tiposerv }}
+                                    </span>
+                                    </td>
                                     <td> {{ lv.fecha }} </td>
                                     <td> {{ lv.hora }} </td>
                                     <td>
-                                        <button (click)="childManifiesto(lv.idviaje)" class="btn btn-primary">
+                                        <button (click)="childManifiesto(lv.idviaje)" class="btn btn-outline-primary">
                                       <i class="fa fa-eye"></i>
                                     </button>
                                     </td>

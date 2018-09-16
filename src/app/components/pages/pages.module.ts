@@ -40,7 +40,7 @@ import { SistemaClientesReporteComponent } from './offline/sistema-clientes/sist
     OrderOfflineCajaComponent,
     SistemaClientesComponent,
     SistemaClientesReporteComponent,
-    CreaUsuarioComponent
+    CreaUsuarioComponent,
   ]
 })
 export class PagesModule { }

@@ -1,6 +1,6 @@
 <div class="row">
     <div *ngIf="updateFormMode" class="col-md-4">
-        <button (click)="confirmation();" class="btn btn-outline-success">
+        <button (click)="confirmation();" class="btn btn-outline-primary">
                     <i class="fa fa-plug"></i>
                     Guardar reporte
         </button> &nbsp;
@@ -130,7 +130,10 @@
                         <input type="hidden" name="idpersona" [(ngModel)]="idpersona" value="">
                         <input type="hidden" name="validate" [(ngModel)]="canSendForm" value="">
                     </fieldset>
-                    <button type="submit" class="btn btn-outline-success">Guardar</button>
+                    <button type="submit" class="btn btn-outline-primary">
+                        <i class="fa fa-save"></i>
+                        Guardar
+                    </button>
                 </form>
             </div>
         </div>

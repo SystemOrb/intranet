@@ -6,7 +6,6 @@ import { Bus } from '../../../../models/viajes_programados/bus.class';
 import { Ruta } from '../../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../../models/viajes_programados/tripulacion.class';
 import { PdfGeneratorService } from '../../../../services/intranet/pdf-generator.service';
-declare function init_plugins();
 @Component({
   selector: 'app-order-manifiesto-offline',
   templateUrl: './order-manifiesto-offline.component.html',
@@ -37,7 +36,6 @@ export class OrderManifiestoOfflineComponent implements OnInit {
   }
 
   async ngOnInit() {
-    init_plugins();
     this.dataOffline = await this.createTable();
     this.Bus = this.dataOffline._data.Bus;
     this.idviaje = this.dataOffline._data.idviaje;

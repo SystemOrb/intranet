@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from '../../../../services/DB/indexed-db.service';
 import { Router } from '@angular/router';
-declare function init_plugins();
 declare const swal: any;
 @Component({
   selector: 'app-table-offline',
@@ -11,7 +10,6 @@ declare const swal: any;
 export class TableOfflineComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDBService, private _route: Router) {
-    init_plugins();
   }
   async ngOnInit() {
     this.displayTable = await this.createTable();

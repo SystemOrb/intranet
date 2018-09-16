@@ -8,7 +8,6 @@ import { Tripulacion } from '../../../models/viajes_programados/tripulacion.clas
 import { IndexedDBService } from '../../../services/DB/indexed-db.service';
 import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
 declare const swal: any;
-declare function init_plugins();
 @Component({
   selector: 'app-order-manifiesto',
   templateUrl: './order-manifiesto.component.html',
@@ -39,7 +38,6 @@ export class OrderManifiestoComponent implements OnInit {
   }
 
   ngOnInit() {
-    init_plugins();
     this.obtenerManifiesto();
   }
   obtenerManifiesto() {

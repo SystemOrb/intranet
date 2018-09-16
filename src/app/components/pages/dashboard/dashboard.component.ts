@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare function init_plugins();
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,10 +7,11 @@ declare function init_plugins();
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) {
+    this._router.navigate(['/usuarios']);
+  }
 
   ngOnInit() {
-    init_plugins();
   }
 
 }

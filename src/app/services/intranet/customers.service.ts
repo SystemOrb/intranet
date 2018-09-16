@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { HTTP_SERVICE } from '../services.config';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
@@ -10,10 +10,10 @@ import { ClientUser } from '../../models/usuario/cliente.class';
   providedIn: 'root'
 })
 export class CustomersService {
-
+  @Output() public tableData: EventEmitter<any> = new EventEmitter<any>();
   constructor(private _http: HttpClient) { }
-  ListadoPersonas() {
-    const urlCustomer = `${HTTP_SERVICE}listadopersonas_por_rol.php?idrol=2&buscado=`;
+  ListadoPersonas(role: number) {
+    const urlCustomer = `${HTTP_SERVICE}listadopersonas_por_rol.php?idrol=${role}&buscado=`;
     return this._http.get(urlCustomer).pipe(
       map( (response: any) => {
         return response;
@@ -45,9 +45,11 @@ export class CustomersService {
       })
     );
   }
-  BorraPersona(customer: ClientUser) {
+  BorraPersona(idpersona: string) {
     const urlCustomer = `${HTTP_SERVICE}persona_eliminar.php`;
-    return this._http.post(urlCustomer, customer).pipe(
+    return this._http.post(urlCustomer, {
+      idpersona
+    }).pipe(
       map( (response: any) => {
         return response;
       }), catchError( (err: any) => {

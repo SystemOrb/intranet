@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h4 class="card-title">Busqueda</h4>
                 <div style="float: left;" class="col-sm-2 col-sm-offset-1">
-                    <button (click)="location(0)" class="btn btn-outline-success">
+                    <button (click)="location(0)" class="btn btn-outline-primary">
                   <i class="fa fa-plus"></i>
                   Crear usuario
               </button>
@@ -13,8 +13,11 @@
                     <div id="myTable_wrapper" class="dataTables_wrapper no-footer">
                         <div id="myTable_filter" class="dataTables_filter">
                             <form>
-                                <label>Busqueda por Rol:
-                                <input  name="dateSearch" type="date"  aria-controls="myTable">
+                                <label>
+                                <select (change)="loadTable($event.target.value);" class="form-control" required ngModel name="rol">
+                                    <option selected disabled value="">-- Selecciona un rol --</option>
+                                    <option *ngFor="let r of Roles" [value]="r.idcategoria">{{ r.nombre }}</option>
+                                </select>
                               </label>
                             </form>
                         </div>
@@ -35,7 +38,7 @@
                                     <td> {{ c.nrodoc }} </td>
                                     <td> {{ c.roles }} </td>
                                     <td>
-                                        <button (click)="location(c.idpersona)" class="btn btn-outline-success">
+                                        <button (click)="location(c.idpersona)" class="btn btn-outline-primary">
                                       <i class="fa fa-eye"></i>
                                     </button>&nbsp;
                                         <button (click)="confirmation(c.idpersona, x)" class="btn btn-outline-danger">

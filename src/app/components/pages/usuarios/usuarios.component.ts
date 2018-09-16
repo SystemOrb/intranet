@@ -3,7 +3,7 @@ import { ClientUser } from '../../../models/usuario/cliente.class';
 import { CustomersService } from '../../../services/intranet/customers.service';
 import { PartialObserver } from 'rxjs';
 import { Router } from '@angular/router';
-declare function init_plugins();
+import { Rol } from '../../../models/usuario/roles.class';
 declare const swal: any;
 @Component({
   selector: 'app-usuarios',
@@ -12,30 +12,29 @@ declare const swal: any;
 })
 export class UsuariosComponent implements OnInit {
   listadoPersonas: ClientUser[] | any =  [];
+  Roles: Rol[] | any = [];
   constructor(private system_: CustomersService, private _router: Router) {
   }
 
   ngOnInit() {
-    init_plugins();
     this.listarPersonas();
+    this.cargaRoles();
   }
   listarPersonas() {
-    this.system_.ListadoPersonas().subscribe(
+    this.system_.ListadoPersonas(2).subscribe(
       (systemCustomers: PartialObserver<any> | any): void => {
         this.listadoPersonas = systemCustomers.listado;
-        console.log(this.listadoPersonas);
       }
     );
   }
-  listarporRol(keyRol: string) {}
-  eliminaPersona(idpersona: number, position: number) {
-    this.system_.BorraPersona(new ClientUser(idpersona)).subscribe(
+  eliminaPersona(idpersona: string, position: number) {
+    this.system_.BorraPersona(`${idpersona}`).subscribe(
       (cli: PartialObserver<any> | any): void => {
        console.log(cli);
       }
     );
   }
-  confirmation(idpersona: number, position: number) {
+  confirmation(idpersona: string, position: number) {
     swal({
       title: '¿Deseas eliminar a este usuario?',
       text: 'Está seguro? este paso no se puede deshacer',
@@ -55,5 +54,21 @@ export class UsuariosComponent implements OnInit {
   // navigate();
   location(idpersona?: number) {
     this._router.navigate([`crea/usuarios/${idpersona}`]);
+  }
+  // Roles
+  cargaRoles() {
+    this.system_.Roles().subscribe(
+      (rol: PartialObserver<any> | any): void => {
+        this.Roles = rol.listado;
+      }
+    );
+  }
+  // Carga tabla buscador dinamico
+  loadTable(rol: number) {
+    this.system_.ListadoPersonas(rol).subscribe(
+      (systemCustomers: PartialObserver<any> | any): void => {
+        this.listadoPersonas = systemCustomers.listado;
+      }
+    );
   }
 }

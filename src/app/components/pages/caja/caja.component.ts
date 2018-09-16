@@ -3,7 +3,6 @@ import { IntranetService } from '../../../services/intranet/intranet.service';
 import { ClientUser } from '../../../models/usuario/cliente.class';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
-declare function init_plugins();
 @Component({
   selector: 'app-caja',
   templateUrl: './caja.component.html',
@@ -18,7 +17,6 @@ export class CajaComponent implements OnInit {
   }
 
   ngOnInit() {
-    init_plugins();
     this.tablaUsuariosTrajabores();
   }
   async tablaUsuariosTrajabores() {

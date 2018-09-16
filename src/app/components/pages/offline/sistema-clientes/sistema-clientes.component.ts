@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexedDB3Service } from '../../../../services/DB/indexed-db3.service';
 import { Router } from '@angular/router';
-declare function init_plugins();
 declare const swal: any;
 @Component({
   selector: 'app-sistema-clientes',
@@ -13,7 +12,6 @@ export class SistemaClientesComponent implements OnInit {
   constructor(private _storage: IndexedDB3Service, private _route: Router) { }
 
   async ngOnInit() {
-    init_plugins();
     this.displayTable = await this.createTable();
   }
   // Buscamos si hay data en la base de datos del cache
