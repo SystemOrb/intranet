@@ -1,20 +1,14 @@
-<style>
-    ul li a,
-    i {
-        color: white !important
-    }
-</style>
-<aside style="background-color: #5F0576" class="left-sidebar">
+<aside *ngIf="_sidebar.DisplaySidebar || !isDevice" id="asideMobile" style="background-color: #5F0576;" class="left-sidebar">
     <div class="scroll-sidebar">
         <nav style="background-color: #5F0576" class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">PERSONAL</li>
-                <li>
+                <li class="">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-clipboard-account"></i>
                         <span class="hide-menu">Clientes <span class="label label-rouded label-themecolor pull-right">4</span></span>
                 </a>
-                    <ul aria-expanded="false" class="collapse">
+                    <ul aria-expanded="false" class="collapse in">
                         <div *ngIf="displayMenu">
                             <li><a [routerLink]="['/usuarios']">Usuarios</a></li>
                             <li><a [routerLink]="['/caja']">Cuadre de caja</a></li>
@@ -24,7 +18,7 @@
                 <li>
                     <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-truck"></i>
                     <span class="hide-menu">Transporte</span></a>
-                    <ul aria-expanded="false" class="collapse">
+                    <ul aria-expanded="false" class="collapse in">
                         <div *ngIf="displayMenu">
                             <li><a [routerLink]="['/pasajeros']">Pasajeros</a></li>
                         </div>
@@ -32,7 +26,7 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-database-minus"></i>
                     <span class="hide-menu">Almacenado</span></a>
-                    <ul aria-expanded="false" class="collapse">
+                    <ul aria-expanded="false" class="collapse in">
                         <li><a [routerLink]="['/manifiesto/offline/pasajeros']">Pasajeros</a></li>
                         <li><a [routerLink]="['/cuadre/offline/caja']">Caja</a></li>
                         <li><a [routerLink]="['/system/offline/usuarios']">Usuarios</a></li>

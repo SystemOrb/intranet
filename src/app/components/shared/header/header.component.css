@@ -1,0 +1,13 @@
+.hide-sidebar {
+    display: none;
+}
+
+.show-sidebar {
+    display: block;
+}
+
+@media only screen and (max-width:480px) {
+    .margin-header {
+        margin-left: 21%;
+    }
+}

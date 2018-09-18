@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IndexedDB3Service } from '../../../../services/DB/indexed-db3.service';
 import { Router } from '@angular/router';
+import { SidebarService } from '../../../../services/intranet/sidebar.service';
 declare const swal: any;
 @Component({
   selector: 'app-sistema-clientes',
@@ -9,7 +10,10 @@ declare const swal: any;
 })
 export class SistemaClientesComponent implements OnInit {
   displayTable: any[] = [];
-  constructor(private _storage: IndexedDB3Service, private _route: Router) { }
+  constructor(private _storage: IndexedDB3Service, private _route: Router,
+    private _sidebar: SidebarService) {
+      this._sidebar.DisplaySidebar = false;
+     }
 
   async ngOnInit() {
     this.displayTable = await this.createTable();

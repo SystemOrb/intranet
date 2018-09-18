@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { IndexedDBService } from '../../../services/DB/indexed-db.service';
+import { SidebarService } from '../../../services/intranet/sidebar.service';
 @Component({
   selector: 'app-pasajeros',
   templateUrl: './pasajeros.component.html',
@@ -12,7 +13,9 @@ import { IndexedDBService } from '../../../services/DB/indexed-db.service';
 })
 export class PasajerosComponent implements OnInit {
   Rutas: ListadoRutas[] = [];
-  constructor(public _intranet: IntranetService, private _route: Router) {
+  constructor(public _intranet: IntranetService, private _route: Router,
+    private _sidebar: SidebarService) {
+    this._sidebar.DisplaySidebar = false;
    }
 
   ngOnInit() {

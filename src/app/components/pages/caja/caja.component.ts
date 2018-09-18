@@ -3,6 +3,8 @@ import { IntranetService } from '../../../services/intranet/intranet.service';
 import { ClientUser } from '../../../models/usuario/cliente.class';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
+import { SidebarService } from '../../../services/intranet/sidebar.service';
+import * as moment from 'moment';
 @Component({
   selector: 'app-caja',
   templateUrl: './caja.component.html',
@@ -12,8 +14,10 @@ export class CajaComponent implements OnInit {
   dateSearch: Date;
   trabajadores: ClientUser[] = [];
   notData: boolean;
-  constructor(public intranet: IntranetService, private _route: Router) {
+  constructor(public intranet: IntranetService, private _route: Router,
+    private _sidebar: SidebarService) {
     this.dateSearch = intranet.searchDate;
+    this._sidebar.DisplaySidebar = false;
   }
 
   ngOnInit() {
@@ -58,6 +62,6 @@ export class CajaComponent implements OnInit {
       swal('Error de sistema', 'Debes elegir una busqueda por fecha', 'error');
       return;
     }
-    this._route.navigate(['/orden_caja', id_user, date]);
+     this._route.navigate(['/orden_caja', id_user, moment(date).format('DD-MM-YYYY')]);
   }
 }

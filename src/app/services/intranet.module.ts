@@ -7,6 +7,7 @@ import { IndexedDB2Service } from './DB/indexed-db2.service';
 import { CustomersService } from './intranet/customers.service';
 import { IndexedDB3Service } from './DB/indexed-db3.service';
 import { PdfGeneratorService } from './intranet/pdf-generator.service';
+import { SidebarService } from './intranet/sidebar.service';
 @NgModule({
   imports: [
     CommonModule
@@ -18,7 +19,8 @@ import { PdfGeneratorService } from './intranet/pdf-generator.service';
     IndexedDB2Service,
     CustomersService,
     IndexedDB3Service,
-    PdfGeneratorService
+    PdfGeneratorService,
+    SidebarService
   ],
   declarations: []
 })

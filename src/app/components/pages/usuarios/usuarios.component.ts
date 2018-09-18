@@ -4,6 +4,7 @@ import { CustomersService } from '../../../services/intranet/customers.service';
 import { PartialObserver } from 'rxjs';
 import { Router } from '@angular/router';
 import { Rol } from '../../../models/usuario/roles.class';
+import { SidebarService } from '../../../services/intranet/sidebar.service';
 declare const swal: any;
 @Component({
   selector: 'app-usuarios',
@@ -13,7 +14,8 @@ declare const swal: any;
 export class UsuariosComponent implements OnInit {
   listadoPersonas: ClientUser[] | any =  [];
   Roles: Rol[] | any = [];
-  constructor(private system_: CustomersService, private _router: Router) {
+  constructor(private system_: CustomersService, private _router: Router, private _sidebar: SidebarService) {
+    this._sidebar.DisplaySidebar = false;
   }
 
   ngOnInit() {
