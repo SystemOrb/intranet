@@ -12,7 +12,7 @@ export class SistemaClientesComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDB3Service, private _route: Router,
     private _sidebar: SidebarService) {
-      this._sidebar.DisplaySidebar = false;
+      // this._sidebar.DisplaySidebar = false;
      }
 
   async ngOnInit() {

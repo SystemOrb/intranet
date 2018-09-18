@@ -12,7 +12,7 @@ export class TableOfflineCajaComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDB2Service, private _route: Router,
     private _sidebar: SidebarService) {
-      this._sidebar.DisplaySidebar = false;
+      // this._sidebar.DisplaySidebar = false;
    }
 
   async ngOnInit() {

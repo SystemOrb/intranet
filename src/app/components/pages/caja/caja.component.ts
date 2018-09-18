@@ -17,7 +17,7 @@ export class CajaComponent implements OnInit {
   constructor(public intranet: IntranetService, private _route: Router,
     private _sidebar: SidebarService) {
     this.dateSearch = intranet.searchDate;
-    this._sidebar.DisplaySidebar = false;
+    // this._sidebar.DisplaySidebar = false;
   }
 
   ngOnInit() {

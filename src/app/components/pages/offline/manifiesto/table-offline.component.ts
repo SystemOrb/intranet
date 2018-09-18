@@ -12,7 +12,7 @@ export class TableOfflineComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDBService, private _route: Router,
     private _sidebar: SidebarService) {
-    this._sidebar.DisplaySidebar = false;
+    // this._sidebar.DisplaySidebar = false;
   }
   async ngOnInit() {
     this.displayTable = await this.createTable();

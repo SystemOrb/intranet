@@ -15,7 +15,7 @@ export class PasajerosComponent implements OnInit {
   Rutas: ListadoRutas[] = [];
   constructor(public _intranet: IntranetService, private _route: Router,
     private _sidebar: SidebarService) {
-    this._sidebar.DisplaySidebar = false;
+    // this._sidebar.DisplaySidebar = false;
    }
 
   ngOnInit() {

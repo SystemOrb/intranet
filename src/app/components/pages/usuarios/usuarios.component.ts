@@ -15,7 +15,7 @@ export class UsuariosComponent implements OnInit {
   listadoPersonas: ClientUser[] | any =  [];
   Roles: Rol[] | any = [];
   constructor(private system_: CustomersService, private _router: Router, private _sidebar: SidebarService) {
-    this._sidebar.DisplaySidebar = false;
+    // this._sidebar.DisplaySidebar = false;
   }
 
   ngOnInit() {
