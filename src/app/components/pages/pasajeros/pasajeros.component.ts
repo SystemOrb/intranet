@@ -14,7 +14,7 @@ import { SidebarService } from '../../../services/intranet/sidebar.service';
 export class PasajerosComponent implements OnInit {
   Rutas: ListadoRutas[] = [];
   constructor(public _intranet: IntranetService, private _route: Router,
-    private _sidebar: SidebarService) {
+    public _sidebar: SidebarService) {
     // this._sidebar.DisplaySidebar = false;
    }
 
@@ -29,6 +29,7 @@ export class PasajerosComponent implements OnInit {
     );
   }
   BusquedaViajesProgramados(formData: NgForm) {
+    this._sidebar.loader = true;
     if (formData.invalid) {
       swal('Error', 'Debes enviar una información valida para los viajes programados', 'error');
       return;
@@ -41,6 +42,7 @@ export class PasajerosComponent implements OnInit {
           swal('alerta', 'No se encontraron resultados de busqueda', 'warning');
           return;
         }
+          this._sidebar.loader = false;
       }
     );
   }

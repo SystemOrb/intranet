@@ -15,9 +15,9 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let tr of displayTable" role="row" class="odd">
-                                    <td class="sorting_1"> {{ tr._data.Cobranza[0].turno }} </td>
-                                    <td> {{ tr._data.date }} </td>
-                                    <td>
+                                    <td *ngIf="_auth._key == tr._data.admin" class="sorting_1"> {{ tr._data.Cobranza[0].turno }} </td>
+                                    <td *ngIf="_auth._key == tr._data.admin"> {{ tr._data.date }} </td>
+                                    <td *ngIf="_auth._key == tr._data.admin">
                                         <button (click)="linkOffline(tr.key)" class="btn btn-outline-primary">
                                       <i class="fa fa-eye"></i>
                                     </button>

@@ -14,7 +14,7 @@ declare const swal: any;
 export class UsuariosComponent implements OnInit {
   listadoPersonas: ClientUser[] | any =  [];
   Roles: Rol[] | any = [];
-  constructor(private system_: CustomersService, private _router: Router, private _sidebar: SidebarService) {
+  constructor(private system_: CustomersService, private _router: Router, public _sidebar: SidebarService) {
     // this._sidebar.DisplaySidebar = false;
   }
 
@@ -23,9 +23,11 @@ export class UsuariosComponent implements OnInit {
     this.cargaRoles();
   }
   listarPersonas() {
+    this._sidebar.loader = true;
     this.system_.ListadoPersonas(2).subscribe(
       (systemCustomers: PartialObserver<any> | any): void => {
         this.listadoPersonas = systemCustomers.listado;
+        this._sidebar.loader = false;
       }
     );
   }
@@ -67,9 +69,11 @@ export class UsuariosComponent implements OnInit {
   }
   // Carga tabla buscador dinamico
   loadTable(rol: number) {
+    this._sidebar.loader = true;
     this.system_.ListadoPersonas(rol).subscribe(
       (systemCustomers: PartialObserver<any> | any): void => {
         this.listadoPersonas = systemCustomers.listado;
+        this._sidebar.loader = false;
       }
     );
   }

@@ -10,6 +10,8 @@ import { SystemCustomer } from '../../../models/usuario/SystemCustomer.class';
 import { HTTP_SERVICE } from '../../../services/services.config';
 import { IndexedDB3Service } from '../../../services/DB/indexed-db3.service';
 import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
+import { AuthService } from '../../../services/auth/auth.service';
+import { SidebarService } from '../../../services/intranet/sidebar.service';
 declare const swal: any;
 @Component({
   selector: 'app-crea-usuario',
@@ -29,7 +31,8 @@ export class CreaUsuarioComponent implements OnInit {
   setterFormValues: SystemCustomer | any = ''; // Si recibe una ID y existe entonces seteamos el formulario automatico
   updateFormMode: boolean = false; // Condicional para el HTML por si el formulario no se puede editar
   constructor(private _param: ActivatedRoute, private _system: CustomersService,
-    private _router: Router, private _storage: IndexedDB3Service, private _pdf: PdfGeneratorService) {
+    private _router: Router, private _storage: IndexedDB3Service, private _pdf: PdfGeneratorService,
+    private _admin: AuthService, public _sidebar: SidebarService) {
     this._param.params.subscribe(
       (_get: PartialObserver<any> | any) => {
         // Validamos la ID que se manda
@@ -86,11 +89,12 @@ export class CreaUsuarioComponent implements OnInit {
       swal('Alerta!', 'Debes rellenar completamente todos los campos', 'warning');
       return;
     }
-    if (!userData.value.validate) {
+    /*if (!userData.value.validate) {
       swal('Alerta!', 'El número de documento es inválido', 'warning');
       return;
-    }
+    }*/
     // Hacemos la petición via AJAX
+    this._sidebar.loader = true;
     const formSystem = new FormData();
     const xhr: any = new XMLHttpRequest();
     let idgiro: string | Blob;
@@ -126,8 +130,10 @@ export class CreaUsuarioComponent implements OnInit {
            if (data.success) {
              if (this.updateFormMode) {
                swal('Mensaje de sistema!', 'El cliente ha sido actualizado con éxito', 'success');
+               this._sidebar.loader = false;
              } else {
                swal('Mensaje de sistema!', 'Nuevo cliente agregado con éxito', 'success');
+               this._sidebar.loader = false;
              }
             setTimeout(
               (): void => {
@@ -211,7 +217,8 @@ export class CreaUsuarioComponent implements OnInit {
     }
     try {
       const LOCAL_DB = {
-        'customer': this.setterFormValues
+        'customer': this.setterFormValues,
+        'admin': this._admin._key
       };
       const storage = await this._storage.creaDB('cuadre_usuarios', 'usuario');
       if (storage.status) {

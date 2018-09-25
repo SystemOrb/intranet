@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  adminUser: ClientUser;
-  _key: string | number;
+  public adminUser: ClientUser;
+  public _key: string | number;
   constructor(private _http: HttpClient, private _route: Router) {
     this.loadLocalStorage();
   }

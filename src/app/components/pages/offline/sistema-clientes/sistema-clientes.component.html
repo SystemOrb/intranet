@@ -17,16 +17,16 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let td of displayTable" role="row" class="odd">
-                                    <td class="sorting_1"> {{ td._data.customer.nombrecompleto }} </td>
-                                    <td> {{ td._data.customer.nrodocc }} </td>
-                                    <td>
+                                    <td *ngIf="_auth._key == td._data.admin" class="sorting_1"> {{ td._data.customer.nombrecompleto }} </td>
+                                    <td *ngIf="_auth._key == td._data.admin"> {{ td._data.customer.nrodocc }} </td>
+                                    <td *ngIf="_auth._key == td._data.admin">
                                         <span class="badge badge-success">{{ td._data.customer.roles }}</span>
                                     </td>
-                                    <td>
+                                    <td *ngIf="_auth._key == td._data.admin">
                                         <span class="badge badge-success" *ngIf="td._data.customer.tipo === 'N'">Natural</span>
                                         <span class="badge badge-info" *ngIf="td._data.customer.tipo === 'J'">Juridico</span>
                                     </td>
-                                    <td>
+                                    <td *ngIf="_auth._key == td._data.admin">
                                         <button (click)="linkOffline(td.key)" class="btn btn-outline-primary">
                                       <i class="fa fa-eye"></i>
                                     </button>

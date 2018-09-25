@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IndexedDB2Service } from '../../../../services/DB/indexed-db2.service';
 import { SidebarService } from '../../../../services/intranet/sidebar.service';
+import { AuthService } from '../../../../services/auth/auth.service';
 declare const swal: any;
 @Component({
   selector: 'app-table-offline-caja',
@@ -11,7 +12,7 @@ declare const swal: any;
 export class TableOfflineCajaComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDB2Service, private _route: Router,
-    private _sidebar: SidebarService) {
+    private _sidebar: SidebarService, public _auth: AuthService) {
       // this._sidebar.DisplaySidebar = false;
    }
 

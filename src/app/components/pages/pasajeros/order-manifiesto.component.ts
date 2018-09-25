@@ -7,6 +7,7 @@ import { Ruta } from '../../../models/viajes_programados/ruta.class';
 import { Tripulacion } from '../../../models/viajes_programados/tripulacion.class';
 import { IndexedDBService } from '../../../services/DB/indexed-db.service';
 import { PdfGeneratorService } from '../../../services/intranet/pdf-generator.service';
+import { AuthService } from '../../../services/auth/auth.service';
 declare const swal: any;
 @Component({
   selector: 'app-order-manifiesto',
@@ -22,7 +23,8 @@ export class OrderManifiestoComponent implements OnInit {
   Tripulacion: Tripulacion;
   isDevice: boolean;
   constructor(private _intranet: IntranetService, private _param: ActivatedRoute,
-  private _storage: IndexedDBService, private _pdf: PdfGeneratorService) {
+  private _storage: IndexedDBService, private _pdf: PdfGeneratorService,
+  private _admin: AuthService) {
     this._param.params.subscribe(
       (get: any) => {
         this.idviaje = get['idviaje'];
@@ -45,6 +47,7 @@ export class OrderManifiestoComponent implements OnInit {
       (manifiesto: any) => {
         this.Tripulacion = manifiesto.tripulacion[0];
         this.Ruta = manifiesto.ruta[0];
+        console.log(this.Ruta);
         this.Bus = manifiesto.bus[0];
         this.Pasajeros = manifiesto.pasajeros;
       }
@@ -75,7 +78,8 @@ export class OrderManifiestoComponent implements OnInit {
           'idviaje': this.idviaje,
           'Bus': this.Bus,
           'Tripulacion': this.Tripulacion,
-          'Pasajeros': this.Pasajeros
+          'Pasajeros': this.Pasajeros,
+          'admin': this._admin._key
         };
         // Save on local storage
         const storage = await this._storage.creaDB('manifiesto_pasajeros', 'manifiesto');

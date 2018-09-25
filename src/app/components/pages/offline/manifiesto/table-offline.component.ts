@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IndexedDBService } from '../../../../services/DB/indexed-db.service';
 import { Router } from '@angular/router';
 import { SidebarService } from '../../../../services/intranet/sidebar.service';
+import { AuthService } from '../../../../services/auth/auth.service';
 declare const swal: any;
 @Component({
   selector: 'app-table-offline',
@@ -11,7 +12,7 @@ declare const swal: any;
 export class TableOfflineComponent implements OnInit {
   displayTable: any[] = [];
   constructor(private _storage: IndexedDBService, private _route: Router,
-    private _sidebar: SidebarService) {
+    private _sidebar: SidebarService, public _auth: AuthService) {
     // this._sidebar.DisplaySidebar = false;
   }
   async ngOnInit() {

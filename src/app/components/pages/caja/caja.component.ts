@@ -15,7 +15,7 @@ export class CajaComponent implements OnInit {
   trabajadores: ClientUser[] = [];
   notData: boolean;
   constructor(public intranet: IntranetService, private _route: Router,
-    private _sidebar: SidebarService) {
+    public _sidebar: SidebarService) {
     this.dateSearch = intranet.searchDate;
     // this._sidebar.DisplaySidebar = false;
   }
@@ -35,6 +35,7 @@ export class CajaComponent implements OnInit {
 
    CargaUsuariosTrabajadores(): Promise<ClientUser[] | any> {
     return new Promise( (resolve, reject) => {
+      this._sidebar.loader = true;
       this.intranet.listadoTrabajadores(3, '').subscribe(
         (listado: any) => {
           if (!listado.listado) {
@@ -52,6 +53,7 @@ export class CajaComponent implements OnInit {
               'roles': worker.roles
             });
           }
+           this._sidebar.loader = false;
            resolve(trabajadores);
         }
       );
